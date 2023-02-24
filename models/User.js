@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-})
+});
 
 //hash password before saving to database
 UserSchema.pre("save", async function(next) {

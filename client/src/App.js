@@ -1,3 +1,4 @@
+import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import { useMemo } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -11,17 +12,17 @@ import RegisterScreen from './components/screens/RegisterScreen';
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Navbar/>
-        <Routes>
-          <Route exact path="/" element={<HomeScreen />} />
-          <Route exact path="/login" element={<LoginScreen />} />
-          <Route exact path="/register" element={<RegisterScreen />} />
-        </Routes>
-      </ThemeProvider>
-    </div>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <Navbar/>
+          <Routes>
+            <Route exact path="/" element={<HomeScreen />} />
+            <Route exact path="/login" element={<LoginScreen />} />
+            <Route exact path="/register" element={<RegisterScreen />} />
+          </Routes>
+        </ThemeProvider>
+      </div>
   );
 }
 
