@@ -38,7 +38,7 @@ const RegisterScreen = () => {
     }
 
     return (
-        <Box width={isNotMobile ? "40%" : "80%" } 
+        <Box width={isNotMobile ? "50%" : "90%" } 
             p="2rem" 
             m="2rem auto" 
             borderRadius={5} 
