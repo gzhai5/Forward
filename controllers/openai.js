@@ -6,7 +6,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // summarize text
-exports.summarize = async (req,res) => {
+exports.summarize = async (req, res) => {
     const { text } = req.body;
 
     try {
@@ -18,10 +18,10 @@ exports.summarize = async (req,res) => {
         });
         if (response.data) {
             if (response.data.choices[0].text) {
-                return res.status(200).json({ summary: response.data.choices[0].text });
+                return res.status(200).json(response.data.choices[0].text);
             }
         }
     } catch (err) {
-        return res.status(404).json({ message: err.message });
+        return res.status(404).json({message: err.message});
     }
 }
