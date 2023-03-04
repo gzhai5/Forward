@@ -16,12 +16,12 @@ app.use(bodyParser.json( {extended: true} ));
 
 // connect to database
 mongoose.set('strictQuery', true);
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true}, err =>{
-    if (err) throw err;
-    console.log(`Connected to Mongodb!`)
+mongoose.connect(process.env.APPSETTING_MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
+    if(err) throw err;
+    console.log('Connected to MongoDB!!!')
 });
 
-const port = process.env.PORT || 4242;
+const port = process.env.WEBSITES_PORT || 8080;
 
 // connect our routes
 app.use('/api/auth', require('./routes/auth'));
@@ -31,3 +31,12 @@ app.use(errorHandler);
 app.listen(port, () => { 
     console.log(`Server is running on port ${port}`)
 });
+
+const node_env = process.env.APPSETTING_NODE_ENV;
+
+if (node_env === 'production') {
+    app.use(express.static('./client/build'));
+    app.get('*', (req, res) => { 
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
