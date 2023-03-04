@@ -12,6 +12,7 @@ import SummaryScreen from './components/screens/SummaryScreen';
 import ParagraphScreen from './components/screens/ParagraphScreen.js';
 import ChatbotScreen from './components/screens/ChatbotScreen.js';
 import JsScreen from './components/screens/JsScreen.js';
+import ScifiScreen from './components/screens/ScifiScreen.js';
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/paragraph" element={<ParagraphScreen />} />
             <Route exact path="/chatbot" element={<ChatbotScreen />} />
             <Route exact path="/jsconvert" element={<JsScreen />} />
+            <Route exact path="/scifi-img" element={<ScifiScreen />} />
           </Routes>
         </ThemeProvider>
       </div>

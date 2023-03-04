@@ -97,3 +97,23 @@ exports.jsConvertor = async (req, res) => {
         return res.status(404).json({message: err.message});
     }
 }
+
+// Create a scifi Image
+exports.scifi = async (req, res) => {
+    const { text } = req.body;
+
+    try {
+        const response = await openai.createImage({
+            prompt: `Generate a science fiction image of: \n${text}`,
+            n: 1,
+            size: "512x512",
+        });
+        if (response.data) {
+            if (response.data.data[0].url) {
+                return res.status(200).json(response.data.data[0].url);
+            }
+        }
+    } catch (err) {
+        return res.status(404).json({message: err.message});
+    }
+}
