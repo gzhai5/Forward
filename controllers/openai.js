@@ -47,7 +47,7 @@ exports.paragraph = async (req, res) => {
     }
 }
 
-// generate a paragraph
+// generate a chatbot
 exports.chatbot = async (req, res) => {
     const { text } = req.body;
 
@@ -66,6 +66,27 @@ exports.chatbot = async (req, res) => {
             Me: \n${text}`,
             max_tokens: 300,
             temperature: 0.7,
+        });
+        if (response.data) {
+            if (response.data.choices[0].text) {
+                return res.status(200).json(response.data.choices[0].text);
+            }
+        }
+    } catch (err) {
+        return res.status(404).json({message: err.message});
+    }
+}
+
+// convert English into js
+exports.jsConvertor = async (req, res) => {
+    const { text } = req.body;
+
+    try {
+        const response = await openai.createCompletion({
+            model: "code-davinci-002",
+            prompt: `/* Convert these instructions into JavaScript code: \n${text} */`,
+            max_tokens: 400,
+            temperature: 0.25,
         });
         if (response.data) {
             if (response.data.choices[0].text) {
