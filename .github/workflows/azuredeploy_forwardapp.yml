@@ -9,15 +9,18 @@ on:
       - azuredeploy
   workflow_dispatch:
 
+env:
+  CI: 'false'
+  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js version
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '18.x'
 
@@ -26,12 +29,15 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+      
+      - run: |
+          zip -r node-app.zip .
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: node-app.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -39,12 +45,16 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+ 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: node-app
+          
+      - run: |
+          unzip node-app.zip
+          rm node-app.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
