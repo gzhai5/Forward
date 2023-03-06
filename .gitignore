@@ -13,7 +13,6 @@ server/localdev-config.json
 /build
 
 # misc
-config.env
 .DS_Store
 .env
 npm-debug.log*
