@@ -16,7 +16,7 @@ const ScifiScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://20.119.0.11:8080/api/openai/scifi-img", {text});
+            const { data } = await axios.post("/api/openai/scifi-img", {text});
             setImage(data);
         } catch (err) {
             console.log(err);
