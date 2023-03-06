@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "proxy": "http://forwardsetup.azurewebsites.net",
   "scripts": {
     "build": "npm install && cd client && npm install && npm run build"
   },

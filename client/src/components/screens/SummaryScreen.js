@@ -16,7 +16,7 @@ const SummaryScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("/api/openai/summary", {text});
+            const { data } = await axios.post("http://forwardsetup.azurewebsites.net/api/openai/summary", {text});
             setSummary(data);
         } catch (err) {
             console.log(err);

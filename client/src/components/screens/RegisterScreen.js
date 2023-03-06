@@ -22,7 +22,7 @@ const RegisterScreen = () => {
         e.preventDefault();
 
         try {
-            await axios.post("/api/auth/register", {username, email, password}, config);
+            await axios.post("http://forwardsetup.azurewebsites.net/api/auth/register", {username, email, password}, config);
             navigate("/login");
         } catch (err) {
             console.log(err);
