@@ -22,7 +22,7 @@ const RegisterScreen = () => {
         e.preventDefault();
 
         try {
-            await axios.post("http://20.119.0.11:8080/api/auth/register", {username, email, password}, config);
+            await axios.post("https://20.119.0.11:8080/api/auth/register", {username, email, password}, config);
             navigate("/login");
         } catch (err) {
             console.log(err);

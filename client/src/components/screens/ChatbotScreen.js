@@ -16,7 +16,7 @@ const ChatbotScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://20.119.0.11:8080/api/openai/chatbot", {text});
+            const { data } = await axios.post("https://20.119.0.11:8080/api/openai/chatbot", {text});
             setResponse(data);
         } catch (err) {
             console.log(err);

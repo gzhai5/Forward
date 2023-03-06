@@ -16,7 +16,7 @@ const SummaryScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://20.119.0.11:8080/api/openai/summary", {text});
+            const { data } = await axios.post("https://20.119.0.11:8080/api/openai/summary", {text});
             setSummary(data);
         } catch (err) {
             console.log(err);

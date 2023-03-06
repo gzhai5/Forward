@@ -16,7 +16,7 @@ const ParagraphScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://20.119.0.11:8080/api/openai/paragraph", {text});
+            const { data } = await axios.post("https://20.119.0.11:8080/api/openai/paragraph", {text});
             setParagraph(data);
         } catch (err) {
             console.log(err);
