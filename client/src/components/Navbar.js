@@ -8,7 +8,7 @@ const Navbar = () => {
 
     const LogoutHandler = async() => {
         try {
-            await axios.post("http://localhost:8080/api/auth/logout").then(res => fullyLogout(res.data));
+            await axios.post("/api/auth/logout").then(res => fullyLogout(res.data));
         } catch (err) {
             console.log(err);
         }
@@ -23,7 +23,7 @@ const Navbar = () => {
 
     const checkRefresh = async() => {
         try {
-            const token = await axios.get("http://localhost:8080/api/auth/refresh-token");
+            const token = await axios.get("/api/auth/refresh-token");
             if (!token) {
                 localStorage.removeItem("authToken");
                 setLoggedIn(false);

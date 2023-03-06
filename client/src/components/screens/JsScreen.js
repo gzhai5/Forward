@@ -16,7 +16,7 @@ const JsScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://localhost:8080/api/openai/jsconvert", {text});
+            const { data } = await axios.post("/api/openai/jsconvert", {text});
             setCode(data.substring(2));
         } catch (err) {
             console.log(err);
