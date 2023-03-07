@@ -16,7 +16,7 @@ const ParagraphScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("http://forwardsetup.azurewebsites.net/api/openai/paragraph", {text});
+            const { data } = await axios.post("https://forwardsetup.azurewebsites.net/api/openai/paragraph", {text});
             setParagraph(data);
         } catch (err) {
             console.log(err);

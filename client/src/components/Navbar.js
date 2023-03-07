@@ -8,7 +8,7 @@ const Navbar = () => {
 
     const LogoutHandler = async() => {
         try {
-            await axios.post("http://forwardsetup.azurewebsites.net/api/auth/logout").then(res => fullyLogout(res.data));
+            await axios.post("https://forwardsetup.azurewebsites.net/api/auth/logout").then(res => fullyLogout(res.data));
         } catch (err) {
             console.log(err);
         }
@@ -23,7 +23,7 @@ const Navbar = () => {
 
     const checkRefresh = async() => {
         try {
-            const token = await axios.get("http://forwardsetup.azurewebsites.net/api/auth/refresh-token");
+            const token = await axios.get("https://forwardsetup.azurewebsites.net/api/auth/refresh-token");
             if (!token) {
                 localStorage.removeItem("authToken");
                 setLoggedIn(false);
