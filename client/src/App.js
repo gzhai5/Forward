@@ -13,6 +13,7 @@ import ParagraphScreen from './components/screens/ParagraphScreen.js';
 import ChatbotScreen from './components/screens/ChatbotScreen.js';
 import JsScreen from './components/screens/JsScreen.js';
 import ScifiScreen from './components/screens/ScifiScreen.js';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings()), []);
@@ -25,7 +26,7 @@ function App() {
             <Route exact path="/" element={<HomeScreen />} />
             <Route exact path="/login" element={<LoginScreen />} />
             <Route exact path="/register" element={<RegisterScreen />} />
-            <Route exact path="/summary" element={<SummaryScreen />} />
+            <Route exact path="/summary" element={<PrivateRoute><SummaryScreen /></PrivateRoute>} />
             <Route exact path="/paragraph" element={<ParagraphScreen />} />
             <Route exact path="/chatbot" element={<ChatbotScreen />} />
             <Route exact path="/jsconvert" element={<JsScreen />} />

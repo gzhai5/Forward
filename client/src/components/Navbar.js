@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Link, Typography, useTheme } from '@mui/material';
 import axios from "axios";
 
 const Navbar = () => { 
     const theme = useTheme();
-    const Loggedin = JSON.parse(localStorage.getItem("authToken"));
+    const [Loggedin, setLoggedIn] = useState(JSON.parse(localStorage.getItem("authToken")));
 
     const LogoutHandler = async() => {
         try {
@@ -20,6 +20,21 @@ const Navbar = () => {
             window.location.reload();
         }
     }
+
+    const checkRefresh = async() => {
+        try {
+            const token = await axios.get("http://localhost:4242/api/auth/refresh-token");
+            if (!token) {
+                localStorage.removeItem("authToken");
+                setLoggedIn(false);
+                LogoutHandler();
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    checkRefresh();
     
     return (
         <Box width="100%" p="1rem 6%" backgroundColor={theme.palette.background.alt} textAlign="center" sx={{boxShadow:3, mb: 2}}>
