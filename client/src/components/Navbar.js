@@ -23,7 +23,7 @@ const Navbar = () => {
 
     const checkRefresh = async() => {
         try {
-            const token = await axios.get("https://forwardsetup.azurewebsites.net/api/auth/refresh-token");
+            const token = await axios.get("https://20.119.0.11:8080/api/auth/refresh-token");
             if (!token) {
                 localStorage.removeItem("authToken");
                 setLoggedIn(false);
