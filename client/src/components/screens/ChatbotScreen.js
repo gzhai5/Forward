@@ -16,7 +16,7 @@ const ChatbotScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("https://forwardsetup.azurewebsites.net/api/openai/chatbot", {text});
+            const { data } = await axios.post("/api/openai/chatbot", {text});
             setResponse(data);
         } catch (err) {
             console.log(err);
