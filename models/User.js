@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs'); // save the user pwd in hash so that no one know the exact pwd, including admin
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({ 
     username: {
         type: String,
         required: [true, "Please provide us a username"],

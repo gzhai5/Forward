@@ -21,7 +21,7 @@ const LoginScreen = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.post("https://forwardapp.azurewebsites.net/api/auth/login", {email, password}, config);
+            const { data } = await axios.post("https://forwardsetup.azurewebsites.net/api/auth/login", {email, password}, config);
             if (data.token.accessToken) {
                 localStorage.setItem("authToken", true);
                 navigate("/");

@@ -6,7 +6,7 @@ exports.protect = async (req, res, next) => {
     let token;
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-        token = req.headers.authorization.spilt(' ')[1];
+        token = req.headers.authorization.split(' ')[1];
     }
 
     if (!token) {
@@ -14,16 +14,18 @@ exports.protect = async (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+        const decoded = jwt.verify(token, process.env.APPSETTING_JWT_ACCESS_SECRET);
         if (!decoded.id) {
-            return next(new ErrorResponse('Token verification failed. Authorization denied', 401));
+            return next(new ErrorResponse('Token verification failed. Authorization denied.', 401));
         }
 
         const user = await User.findById(decoded.id);
-        if (!user) {
+        if(!user) {
             return next(new ErrorResponse('User not found with this id', 404));
         }
+
         req.user = user;
+
         next();
     } catch (err) {
         next(err);

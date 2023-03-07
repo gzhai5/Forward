@@ -1,7 +1,7 @@
-require("dotenv").config({ path: "../config.env" });
+//require("dotenv").config({ path: "../config.env" });
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_SECRET,
+  apiKey: process.env.APPSETTING_OPENAI_API_SECRET,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -78,7 +78,7 @@ exports.chatbot = async (req, res) => {
 }
 
 // convert English into js
-exports.jsConvertor = async (req, res) => {
+exports.jsConverter = async (req, res) => {
     const { text } = req.body;
 
     try {

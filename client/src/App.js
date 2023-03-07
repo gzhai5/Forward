@@ -11,10 +11,10 @@ import HomeScreen from './components/screens/HomeScreen';
 import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import SummaryScreen from './components/screens/SummaryScreen';
-import ParagraphScreen from './components/screens/ParagraphScreen.js';
-import ChatbotScreen from './components/screens/ChatbotScreen.js';
-import JsScreen from './components/screens/JsScreen.js';
-import ScifiScreen from './components/screens/ScifiScreen.js';
+import ParagraphScreen from './components/screens/ParagraphScreen';
+import ChatbotScreen from './components/screens/ChatbotScreen';
+import JavascriptScreen from './components/screens/JavascriptScreen';
+import ScifiScreen from './components/screens/ScifiScreen';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
   return (
       <div className="App">
         <ThemeProvider theme={theme}>
-          <CssBaseline/>
+          <CssBaseline />
           <Navbar/>
           <Routes>
             <Route exact path="/" element={<HomeScreen />} />
@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/summary" element={<PrivateRoute><SummaryScreen /></PrivateRoute>} />
             <Route exact path="/paragraph" element={<ParagraphScreen />} />
             <Route exact path="/chatbot" element={<ChatbotScreen />} />
-            <Route exact path="/jsconvert" element={<JsScreen />} />
+            <Route exact path="/js-convert" element={<JavascriptScreen />} />
             <Route exact path="/scifi-img" element={<ScifiScreen />} />
           </Routes>
         </ThemeProvider>

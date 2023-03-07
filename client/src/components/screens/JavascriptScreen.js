@@ -3,7 +3,7 @@ import { Box, Link, Typography, useTheme, useMediaQuery, Collapse, Alert, TextFi
 import { useState } from 'react';
 import axios from 'axios';
 
-const JsScreen = () => { 
+const JavascriptScreen = () => { 
     const theme = useTheme();
     const isNotMobile = useMediaQuery("(min-width: 1000px)");
 
@@ -65,4 +65,4 @@ const JsScreen = () => {
     )
 }
 
-export default JsScreen;
+export default JavascriptScreen;

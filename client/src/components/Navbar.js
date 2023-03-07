@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from 'react';
 import { Box, Link, Typography, useTheme } from '@mui/material';
-import axios from "axios";
+import axios from 'axios';
+import { useState } from 'react';
 
 const Navbar = () => { 
     const theme = useTheme();
@@ -14,17 +15,17 @@ const Navbar = () => {
         }
     }
 
-    const fullyLogout = (data) => {
+    const fullyLogout = (data) => { 
         if (data.success) {
             localStorage.removeItem("authToken");
             window.location.reload();
         }
     }
 
-    const checkRefresh = async() => {
+    const checkRefresh = async () => { 
         try {
-            const token = await axios.get("https://20.119.0.11:8080/api/auth/refresh-token");
-            if (!token) {
+            const token = await axios.get("https://forwardsetup.azurewebsites.net/api/auth/refresh-token");
+            if (!token.data) {
                 localStorage.removeItem("authToken");
                 setLoggedIn(false);
                 LogoutHandler();
@@ -35,7 +36,7 @@ const Navbar = () => {
     }
 
     checkRefresh();
-    
+
     return (
         <Box width="100%" p="1rem 6%" backgroundColor={theme.palette.background.alt} textAlign="center" sx={{boxShadow:3, mb: 2}}>
             <Typography variant="h1" color="primary" fontWeight="bold"><Link href="/" underline="none">Forward</Link></Typography>

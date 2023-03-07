@@ -71,21 +71,3 @@ exports.getRefreshToken = async (req, res, next) => {
     }
     
 }
-
-exports.getSubscription = async (req, res, next) => { 
-    try {
-        const user = await User.findById(req.user.id);
-        res.status(200).json({ subscription: user.subscription });
-    } catch (err) {
-        next(err);
-    }
-}
-
-exports.getCustomer = async (req, res, next) => { 
-    try {
-        const user = await User.findById(req.user.id);
-        res.status(200).json({ customerId: user.customerId });
-    } catch (err) {
-        next(err);
-    }
-}
